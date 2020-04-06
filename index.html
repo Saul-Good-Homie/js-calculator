@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="pageWrapper">
+
+        <div id="calculator">
+           <div id="history">
+text content
+           </div>
+           <div id="active">
+            <div id="working">
+                
+            </div>
+           </div>
+           <div id="buttons">
+               <div class="button operator del">
+                    <button id="del" value = "DEL">DEL</button>
+               </div>
+               <div class="button operator multiply">
+                    <button onclick='storeVariableA(this)' id="*" value=" * ">*</button>
+               </div>
+               <div class="button operator divide">
+                    <button onclick='storeVariableA(this)' id="/" value=" / ">/</button>
+               </div>
+               <div class="button operator AC">
+                    <button id="AC" value="AC">AC</button>
+               </div>
+               <div class="button operator minus">
+                    <button onclick='storeVariableA(this)' id="-" value=" - ">-</button>
+               </div>
+               <div class="button operator add">
+                    <button onclick='storeVariableA(this)' id="+" value=" + ">+</button>
+               </div>
+               <div class="button operator equals">
+                    <button onclick='calculate(this)' id="=" value=" = ">=</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="7" value = "7">7</buttononclick='storeVar(this)'>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="8" value="8">8</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="9" value="9">9</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="4" value="4">4</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="5" value="5">5</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="6" value="6">6</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="1" value="1">1</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="2" value="2">2</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="3" value="3">3</button>
+               </div>
+               <div class="button integer zero">
+                    <button onclick='getValue(this)' id="0" value="0">0</button>
+               </div>
+               <div class="button integer">
+                    <button onclick='getValue(this)' id="." value=".">.</button>
+               </div>
+           </div>
+
+        </div>
+        <div id="footer">
+            <p>JavaScript Calulator from The Odin Project</p>
+        </div>
+
+    </div>
+
+
+
+
+ <script type="text/javascript" src="javascript.js"></script>
+
+
+</body>
+</html>
