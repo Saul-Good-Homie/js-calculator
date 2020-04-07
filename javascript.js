@@ -1,65 +1,90 @@
-
 function add(a,b){
-    return a+b;
+    sum = Math.floor((a+b)*100)/100;
+    return sum;
 }
 
 function subtract(a,b){
-    return a-b;
+    difference = Math.floor((a-b)*100)/100;
+    return difference;
 }
 
 function multiply(a,b){
-    return a*b;
+    product = Math.floor((a*b)*100)/100;
+    return product;
 }
 
 function divide(a,b){
-    return a/b;
+    quotient = Math.floor((a/b)*100)/100;
+    return quotient;
 }
 
-function operate(operator, a, b){
-    if(operator == '+'){
-        console.log(add(a,b));
+function calculate(operator, a, b){
+    a = parseFloat(a);
+    b = parseFloat(b);
+    if(operator == ' + '){
+        return add(a,b);
     }
-    else if(operator == "-"){
-        console.log(subtract(a,b));
+    else if(operator == " - "){
+        return subtract(a,b);
     }
-    else if(operator == "*"){
-        console.log(multiply(a,b));
+    else if(operator == " * "){
+        return multiply(a,b);
     }
-
-    else if(operator == "/"){
-        console.log(divide(a,b));
+    else if(operator == " / "){
+            if(b=== 0){
+                return "You can't do that!"
+            }
+                    return divide(a,b);
     }
 }
 
-let variableA = [];
-let variableB = [];
-let currentNumber;
+const display = document.getElementById('display').innerHTML
+let a = '';
+let b = '';
+let op = '';
 
-function getValue(el){
-    let buttonValue = el.value;
-    currentNumber = document.getElementById("active").innerHTML += buttonValue;
+
+const integers = document.querySelectorAll('.integer');
+    for (i = 0; i < integers.length; ++i) {
+        integers[i].addEventListener('click', function(e) {
+            if(op ==''){
+            a += e.target.value;
+           document.getElementById('display').innerHTML = a;
+        }
+        else{
+            b += e.target.value;
+           document.getElementById('display').innerHTML = a + op + b;
+        }
+  });
+}
+
+const operands = document.querySelectorAll('.operator');
+    for (i = 0; i < operands.length; ++i) {
+         operands[i].addEventListener('click', function(e) {
+            op = e.target.value;
+            document.getElementById('display').innerHTML = a + op;
+  });
+}
+
+const equals = document.querySelectorAll('.equals');
+    for (i = 0; i < equals.length; ++i) {
+    equals[i].addEventListener('click', function(e) {
+        let solution = calculate(op, a, b);
+        document.getElementById('display').innerHTML = solution;
+        a = solution;
+        b = '';
+        op = '';
+    })
+  };
+
+  const clear = document.querySelectorAll('.AC');
+  for (i = 0; i < clear.length; ++i) {
+  clear[i].addEventListener('click', function(e) {
+      document.getElementById('display').innerHTML = '';
+      a = '';
+      b = '';
+      op = '';
+  })
+};
     
-    console.log(variableA);
-}
 
-function storeVariableA(el){
-    variableA = document.getElementById("active").innerHTML
-    document.getElementById("working").innerHTML = currentNumber;
-    document.getElementById("active").innerHTML = "";
-    console.log(variableA)
-}
-
-document.getElementById("AC").onclick = function() {clear()};
-
-function clear() {
-  document.getElementById("active").innerHTML = "";
-  variableA.length = 0;
-  console.log(variableA);
-}
-
-document.getElementById("del").onclick = function() {deleteLast()};
-
-function deleteLast(){
-  variableA.pop(); 
-  console.log(variableA);
-}
