@@ -9,6 +9,14 @@ html {
       font-family: Helvetica;
   }
 
+  a {
+    color: inherit;
+    text-decoration: none; /* no underline */
+  }
+  a:hover{
+      color: blue;
+      text-decoration: underline;
+  }
   
   body,html {
     margin: 0;
@@ -17,7 +25,6 @@ html {
   }
 
   #pageWrapper{
-    border: 2px solid gold;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -28,41 +35,51 @@ html {
     bottom: 0;
     right: 0;
     overflow: auto;
-    background:  #659DBD;
+    background:  #07689f;
 }
 
 #calculator{
     border: solid 2px black;
     margin: auto;
-    width: 400px;
-    height: 500px;
-    background-color: cadetblue;
+    width: 350px;
+    height: 450px;
+    background-color: #a2d5f2;
+    border-radius: 4px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4)
 }
 
 #footer{
-    border: solid 1px red;
     width: 100%;
     position: fixed;
     bottom: 0;
+    font-size: medium;
 }
 
 #history{
-    border: solid 2px black;
+    border: solid 1px black;
     background-color: floralwhite;
     height: 30%;
     padding: 4px;
     font-size: 16px;
     text-align: left;
+    overflow: auto;
+    margin: 2%; 
+    vertical-align: bottom;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(auto-fit, minmax(1.8rem, 1em));
+    grid-gap: 6px;
 }
 
 #active{
     display: grid;
-    border: solid 2px black;
+    border: solid 1px black;
     background-color: floralwhite;
     height: 20%;
     padding: 4px;
     font-size: 16px;
     text-align: right;
+    margin: 2%;
 }
 #display{
     padding: 4px;
@@ -71,18 +88,18 @@ html {
 
 #holding{
     padding: 4px;
+    border: solid 1px black;
     background-color: lightgrey;
-    height: 1fr;
+    height: 25px;
     text-align: left;
 }
 
 #buttons{
-    height: 50%;
+    height: 45%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     padding: 10px;
- 
 }
 
 button{
@@ -106,15 +123,24 @@ button{
     text-decoration: none;
     font-size: 16px;
     border-radius: 4px;
-   
 }
 
-.operator, .AC, .equals{
-    background-color: coral;
+
+.button:active {
+    box-shadow: 0 5px #6666;
+    transform: translateY(2px);
+  }
+
+.operator, .AC, .equals, .del{
+    background-color: #ff7e67;
 }
 
-.integer{
-    background: darkcyan;
+.integer, .decimal{
+    background: #fafafa;
+}
+
+.button:hover{
+    border: solid 1px white;
 }
 
 .del{
