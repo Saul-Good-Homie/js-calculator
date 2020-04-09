@@ -48,19 +48,17 @@ function clearWords(){
 const display = document.getElementById('display').innerHTML
 const holding = document.getElementById('holding').innerHTML
 const history = document.getElementById('history')
-// const history = document.getElementById('history').innerHTML
 
 let solution = '';
 let a = '';
 let b = '';
 let op = '';
+let counter = 0;
 
+//function to add integers as a and b stirngs
 const integers = document.querySelectorAll('.integer');
     for (i = 0; i < integers.length; ++i) {
         integers[i].addEventListener('click', function(e) {
-        if(a == "You can't do that!" || isNaN(a) && a!= '.' || a == undefined){    
-            clearAll();
-        }
         if(a == solution && op == ''){
             a = '';
         }
@@ -75,11 +73,15 @@ const integers = document.querySelectorAll('.integer');
     });
 }
 
+//function to add operand
 const operands = document.querySelectorAll('.operator');
     for (i = 0; i < operands.length; ++i) {
          operands[i].addEventListener('click', function(e) {
              if(op != '' && b != ''){
                  solve();
+             }
+             if(isNaN(a)){
+                 return;
              }
              if(a == ''){
                  return;
@@ -91,36 +93,18 @@ const operands = document.querySelectorAll('.operator');
   });
 }
 
-// const decimals = document.querySelectorAll('.decimal');
-//     for (i = 0; i < decimals.length; ++i) {
-//          decimals[i].addEventListener('click', function(e) {
-//             if(a.includes('.') && op == '')
-//             {
-//                 console.log(a)
-//             return;
-//             }
-//                 if(op ==''){
-//                 a += e.target.value;
-//                 document.getElementById('display').innerHTML = a;
-//                 }
-//                         if(b.includes('.')){
-//                             return;
-//                         }
-//                         else{
-//                     b += e.target.value;
-//                     document.getElementById('display').innerHTML = a + op + b;
-//                 }
-//     });
-// }
-
+//function to add a single deciamal per variable
 const decimals = document.querySelectorAll('.decimal');
     for (i = 0; i < decimals.length; ++i) {
          decimals[i].addEventListener('click', function(e){
-            if(a == "You can't do that!" || isNaN(a) && a!= '.' || a == undefined){    
-                clearAll();
-            }
             if(a == solution && op == ''){
                 a = '';
+            }
+             if(a.includes('.') && op ==''){
+                 return;
+             }
+             if(b.includes('.') && op !=''){
+                return;
             }
                 if(op ==''){
                 a += e.target.value;
@@ -130,8 +114,8 @@ const decimals = document.querySelectorAll('.decimal');
                         b += e.target.value;
                         document.getElementById('display').innerHTML = a + op + b;
                      }
-        });
-    }
+         });
+        }
 
 
 const equals = document.querySelectorAll('.equals');
@@ -153,7 +137,7 @@ const equals = document.querySelectorAll('.equals');
     storedExpression.textContent += wholeEquation; 
     history.append(storedExpression); 
     history.scrollTop = history.scrollHeight;
-    a = solution;
+    a = solution.toString();
     b = '';
     op = '';
 }
